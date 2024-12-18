@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Domains\ProjectManagement\Models\Project;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function __invoke()
+    /**
+     * @return \Inertia\Response
+     */
+    public function __invoke(): Response
     {
         $currentProjects = Project::where('user_id', '=', auth()->user()->id)
             ->where('is_finished', '=', false)
