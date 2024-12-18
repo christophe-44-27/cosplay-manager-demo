@@ -21,4 +21,15 @@ class ProjectController extends Controller
             'projects' => $projects,
         ]);
     }
+
+    /**
+     * @param Project $project
+     * @return Response
+     */
+    public function show(Project $project): Response
+    {
+        return Inertia::render('Projects/Show', [
+            'project' => $project,
+        ]);
+    }
 }

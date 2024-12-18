@@ -14,7 +14,7 @@
                         class="p-4 border border-orange-200 rounded-md hover:bg-orange-50 transition-colors"
                     >
                         <Link
-                            :href="`/projects/${project.id}`"
+                            :href="route('projects.show', {'project': project})"
                             class="block"
                         >
                             <div class="flex gap-4">
@@ -46,7 +46,7 @@
                         class="p-4 border border-orange-200 rounded-md hover:bg-orange-50 transition-colors"
                     >
                         <Link
-                            :href="`/projects/${project.id}`"
+                            :href="route('projects.show', {'project': project})"
                             class="block"
                         >
                             <div class="flex gap-4">
