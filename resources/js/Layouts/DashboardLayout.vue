@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { Link } from '@inertiajs/vue3'
+import {Link, router} from '@inertiajs/vue3'
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 
 const isUserMenuOpen = ref(false)
 
 const navigationItems = [
-    { name: 'Tableau de bord', href: '/dashboard' },
-    { name: 'Mes projets', href: '/projects' },
-    { name: 'La communauté', href: '/community' },
+    { name: 'Tableau de bord', href: 'dashboard' },
+    { name: 'Mes projets', href: 'projects.index' },
+    { name: 'La communauté', href: 'projects.index' },
 ]
 
 const userMenuItems = [
@@ -33,7 +33,7 @@ const userMenuItems = [
                             <Link
                                 v-for="item in navigationItems"
                                 :key="item.name"
-                                :href="item.href"
+                                :href="route(item.href)"
                                 class="text-gray-700 hover:text-orange-600 px-3 py-2 text-sm font-medium"
                                 :class="{ 'text-orange-600': $page.url.startsWith(item.href) }"
                             >

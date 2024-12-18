@@ -2,7 +2,9 @@
 
 namespace App\Domains\ProjectManagement\Providers;
 
+use App\Domains\ProjectManagement\Controllers\ProjectController;
 use App\Providers\ModuleServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class ProjectManagementServiceProvider extends ModuleServiceProvider
 {
@@ -14,5 +16,13 @@ class ProjectManagementServiceProvider extends ModuleServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Migrations');
+        $this->registerProjectRoutes();
+    }
+
+    private function registerProjectRoutes()
+    {
+        $this->registerProtectedRoutes(function() {
+            Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
+        });
     }
 }
