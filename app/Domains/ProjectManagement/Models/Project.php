@@ -55,21 +55,6 @@ class Project extends Model implements HasMedia
     }
 
     /**
-     * @return boolean
-     */
-    public function getIsProjectDoneAttribute(): bool
-    {
-        $projectElements = $this->hasMany(ProjectElement::class)
-            ->where('is_done', '=', 0)
-            ->count();
-
-        if ($projectElements > 0) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * @return BelongsTo
      */
     public function category()
@@ -115,6 +100,25 @@ class Project extends Model implements HasMedia
                     return round($elements_done * 100 / $allProjectsElements->count(), 2);
                 }
                 return 0;
+            }
+        );
+    }
+
+    /**
+     * @return Attribute
+     */
+    protected function isDone(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $projectElements = $this->hasMany(ProjectElement::class)
+                    ->where('is_done', '=', 0)
+                    ->count();
+
+                if ($projectElements > 0) {
+                    return false;
+                }
+                return true;
             }
         );
     }
