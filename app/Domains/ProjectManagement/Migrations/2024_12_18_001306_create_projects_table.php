@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug');
             $table->boolean('is_private')->default(true);
             $table->boolean('is_published')->default(false);
+            $table->boolean('is_finished')->default(false);
             $table->date('estimated_end_date')->nullable();
             $table->decimal('project_duration')->nullable();
             $table->float('project_estimated_price')->nullable();
