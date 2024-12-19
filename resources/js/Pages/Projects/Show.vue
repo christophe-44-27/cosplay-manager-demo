@@ -129,7 +129,7 @@ const handleAddItem = () => {
                     </div>
                 </div>
                 <Link
-                    :href="`/projects/${project.id}/edit`"
+                    :href="route('projects.edit', {'project': project})"
                     class="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                 >
                     <PencilSquareIcon class="w-5 h-5" />
