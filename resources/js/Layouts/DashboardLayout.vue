@@ -8,11 +8,11 @@ const isUserMenuOpen = ref(false)
 const navigationItems = [
     { name: 'Tableau de bord', href: 'dashboard' },
     { name: 'Mes projets', href: 'projects.index' },
-    { name: 'La communauté', href: 'projects.index' },
+    { name: 'La communauté', href: 'members.index' },
 ]
 
 const userMenuItems = [
-    { name: 'Mon compte', href: '/account' },
+    { name: 'Mon compte', href: 'profile.edit' },
 ]
 </script>
 
@@ -60,7 +60,7 @@ const userMenuItems = [
                                 <Link
                                     v-for="item in userMenuItems"
                                     :key="item.name"
-                                    :href="item.href"
+                                    :href="route(item.href)"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50"
                                     method="get"
                                 >

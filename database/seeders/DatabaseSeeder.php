@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => Carbon::now(),
         ]);
 
+        User::factory(75)->create();
+
         $this->call([
             CategoriesTableSeeder::class,
             CountriesTableSeeder::class,
